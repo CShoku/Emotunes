@@ -1,0 +1,50 @@
+{
+    "happy": [
+      {
+        "title": "Happy",
+        "artist": "Pharrell Williams",
+        "url": "https://open.spotify.com/track/60nZcImufyMA1MKQY3dcCH",
+        "image": "https://i.scdn.co/image/ab67616d0000b273223c7e6520f0136c5d21733b"
+      },
+      {
+        "title": "Walking on Sunshine",
+        "artist": "Katrina & The Waves",
+        "url": "https://open.spotify.com/track/0d28khcov6AiegSCpG5TuT",
+        "image": "https://i.scdn.co/image/ab67616d0000b273eafaf556eda644a745d0144d"
+      }
+    ],
+    "relaxed": [
+      {
+        "title": "Weightless",
+        "artist": "Marconi Union",
+        "url": "https://open.spotify.com/track/4lQd8aJ4F6RpujQ5g2prQI",
+        "image": "https://i.scdn.co/image/ab67616d0000b27342b71a9bfb18e209e3ac4456"
+      },
+      {
+        "title": "Breathe Me",
+        "artist": "Sia",
+        "url": "https://open.spotify.com/track/0nJW01T7XtvILxQgC5J7Wh",
+        "image": "https://i.scdn.co/image/ab67616d0000b273cc2e5b05695a83978b9d99ac"
+      }
+    ],
+    "sad": [
+      {
+        "title": "Someone Like You",
+        "artist": "Adele",
+        "url": "https://open.spotify.com/track/4kLLPNt9tqkGVCHNNLO2Fq",
+        "image": "https://i.scdn.co/image/ab67616d0000b2737a3e58c14f9bf97acbe6dbb9"
+      },
+      {
+        "title": "Stay With Me",
+        "artist": "Sam Smith",
+        "url": "https://open.spotify.com/track/2k7pI3Dc3kf3ULb8sXwbh0",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f3b6cde8be7772511684406e"
+      },
+      {
+        "title": "Fix You",
+        "artist": "Coldplay",
+        "url": "https://open.spotify.com/track/4pbJ2Iu3s7bnLn9i8r8B9m",
+        "image": "https://i.scdn.co/image/ab67616d0000b273982c9b00a9a50a55a98262db"
+      }
+    ]
+  }
