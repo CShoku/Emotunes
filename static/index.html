@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emotunes 🎶</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1DB954;
+      margin-bottom: 2rem;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    select, button {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+      margin: 0.5rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+    }
+
+    select {
+      background-color: #282828;
+      color: #fff;
+    }
+
+    button {
+      background-color: #1DB954;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #1ed760;
+    }
+
+    #status {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    #results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .song {
+      background-color: #181818;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .song:hover {
+      transform: scale(1.02);
+    }
+
+    .song img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .song-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .song-artist {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 0.5rem;
+    }
+
+    .song a {
+      color: #1DB954;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .song a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Emotunes 🎶</h1>
+
+  <div class="controls">
+    <label for="mood">気分で選ぶ：</label>
+    <select id="mood">
+      <option value="happy">😊 ハッピー</option>
+      <option value="sad">😢 さみしい</option>
+      <option value="relaxed">😌 リラックス</option>
+    </select>
+    <button onclick="fetchPlaylist()">🎧 再生リストを見る</button>
+  </div>
+
+  <div id="status"></div>
+  <div id="results"></div>
+
+  <script>
+    async function fetchPlaylist() {
+      const mood = document.getElementById("mood").value;
+      const status = document.getElementById("status");
+      const results = document.getElementById("results");
+
+      status.textContent = "🎵 読み込み中...";
+      results.innerHTML = "";
+
+      try {
+        const response = await fetch("/api/playlists", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mood })
+        });
+
+        const data = await response.json();
+        status.textContent = "";
+
+        if (response.ok) {
+          data.playlist.forEach(song => {
+            const div = document.createElement("div");
+            div.className = "song";
+            div.innerHTML = `
+              <img src="${song.image || 'https://via.placeholder.com/300x300?text=No+Image'}" alt="ジャケット">
+              <div class="song-title">${song.title}</div>
+              <div class="song-artist">${song.artist}</div>
+              <a href="${song.url}" target="_blank">▶ リンク</a>
+            `;
+            results.appendChild(div);
+          });
+        } else {
+          status.innerHTML = `<span style="color: red;">${data.detail}</span>`;
+        }
+      } catch (error) {
+        status.innerHTML = `<span style="color: red;">エラー: ${error.message}</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
