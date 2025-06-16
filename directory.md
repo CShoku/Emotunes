@@ -1,6 +1,6 @@
 # ディレクトリ構造の設計目標を記述したファイルです
 mood_api/
-├── app/
+├── backend/
 │   ├── __init__.py
 │   ├── main.py                    # メインアプリケーション
 │   ├── models/
