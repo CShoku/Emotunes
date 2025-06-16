@@ -1,3 +1,42 @@
+# 開発フロー（重要）
+
+## 基本的な開発手順
+1. devブランチから新しいブランチを作成
+   ```bash
+   git checkout dev # devブランチに移動
+   git pull origin dev # リモートにある最新のdevブランチをとってくる
+   git checkout -b feature/機能名 # feature/機能名というブランチを作成
+   ```
+
+2. 実装作業を行う
+　　【重要】以下のコミット前や実装前に、毎回
+    ```bash
+    git fetch
+    git pull origin <ブランチ名>
+    ```
+    をターミナルで打つようにしましょう
+    他の人が同じブランチで作業をしていた時にその差分を取り込んでから
+
+3. 変更をステージングエリアに追加
+   ```bash
+   git add .
+   ```
+
+4. 変更をコミット
+   ```bash
+   git commit -m "[feat]実装内容の簡潔な説明"
+   ```
+
+5. リモートリポジトリにプッシュ
+   ```bash
+   git push origin feature/機能名
+   ```
+
+6. GitHub(https://github.com/CShoku/Emotunes)でプルリクエスト（PR）を作成
+   - devブランチへのマージをリクエスト
+   - レビュアーを指定
+   - 変更内容を詳細に記述
+
 # Gitの基本的な使い方
 
 ## 目次
@@ -28,6 +67,7 @@ git init
 ```
 
 ### ファイルのステージング
+基本的に`git add .`を使います。
 ```bash
 git add ファイル名    # 特定のファイルをステージング
 git add .           # 全ての変更をステージング
