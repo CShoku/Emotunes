@@ -1,0 +1,65 @@
+# 一般的な仮想環境ディレクトリ名
+venv/
+test/
+# 短縮形の仮想環境ディレクトリ名  
+env/
+# 大文字版の仮想環境ディレクトリ名
+ENV/
+# ドット付き（隠しディレクトリ）の仮想環境
+.venv/
+# ドット付きの短縮形仮想環境
+.env/
+# Python仮想環境の設定ファイル
+pyvenv.cfg
+# Pythonバイトコードキャッシュディレクトリ
+__pycache__/
+# .pyc, .pyo, .pyd ファイル（コンパイル済みPython）
+*.py[cod]
+# Jython用クラスファイル
+*$py.class
+# 共有ライブラリファイル（Linux/Mac）
+*.so
+# Python実行ファイルへのシンボリックリンク
+.Python
+# ビルド出力ディレクトリ
+build/
+# 開発用egg情報
+develop-eggs/
+# 配布用パッケージディレクトリ
+dist/
+# ダウンロードファイル
+downloads/
+# eggパッケージ
+eggs/
+# egg情報ディレクトリ
+.eggs/
+# ライブラリディレクトリ
+lib/
+# 64bit用ライブラリディレクトリ
+lib64/
+# buildoutのpartsディレクトリ
+parts/
+# ソース配布用ディレクトリ
+sdist/
+# 可変データディレクトリ
+var/
+# wheelパッケージディレクトリ
+wheels/
+# パッケージメタデータディレクトリ
+*.egg-info/
+# インストール設定ファイル
+.installed.cfg
+# eggパッケージファイル
+*.egg
+# Visual Studio Code設定ディレクトリ
+.vscode/
+# IntelliJ IDEA/PyCharm設定ディレクトリ
+.idea/
+# Vim一時ファイル
+*.swp
+# Vim追加一時ファイル
+*.swo
+# macOSのディレクトリ設定ファイル
+.DS_Store
+# Windowsのサムネイルキャッシュファイル
+Thumbs.db
