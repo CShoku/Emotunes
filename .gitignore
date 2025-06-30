@@ -9,6 +9,8 @@ ENV/
 .venv/
 # ドット付きの短縮形仮想環境
 .env/
+# IDやclientsecretの情報
+.env
 # Python仮想環境の設定ファイル
 pyvenv.cfg
 # Pythonバイトコードキャッシュディレクトリ

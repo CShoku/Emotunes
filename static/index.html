@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
@@ -156,6 +156,130 @@
         }
       } catch (error) {
         status.innerHTML = `<span style="color: red;">エラー: ${error.message}</span>`;
+      }
+    }
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emotunes 🎶</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1DB954;
+      margin-bottom: 2rem;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    select, button {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+      margin: 0.5rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+    }
+
+    select {
+      background-color: #282828;
+      color: #fff;
+    }
+
+    button {
+      background-color: #1DB954;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #1ed760;
+    }
+
+    #status {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    #results {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    a.playlist-link {
+      color: #1DB954;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    a.playlist-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Emotunes 🎶</h1>
+
+  <div class="controls">
+    <label for="mood">気分で選ぶ：</label>
+    <select id="mood">
+      <option value="happy">😊 ハッピー</option>
+      <option value="sad">😢 さみしい</option>
+      <option value="relaxed">😌 リラックス</option>
+    </select>
+    <button onclick="fetchPlaylist()">🎧 プレイリストを作成</button>
+  </div>
+
+  <div id="status">Spotifyと連携してプレイリストを作成します</div>
+  <div id="results"></div>
+
+  <script>
+    async function fetchPlaylist() {
+      const mood = document.getElementById("mood").value;
+      const status = document.getElementById("status");
+      const results = document.getElementById("results");
+
+      status.textContent = "🎵 Spotifyでプレイリストを作成中...";
+      results.innerHTML = "";
+
+      try {
+        const response = await fetch(`/create_playlist?mood=${mood}`, {
+          method: "POST"
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          status.textContent = "✅ プレイリストが作成されました！";
+          results.innerHTML = `
+            <div>以下のリンクからSpotifyで再生できます：</div>
+            <a class="playlist-link" href="${data.url}" target="_blank">🎶 プレイリストを聴く</a>
+          `;
+        } else {
+          status.innerHTML = `<span style="color: red;">エラー: ${data.detail}</span>`;
+        }
+      } catch (error) {
+        status.innerHTML = `<span style="color: red;">通信エラー: ${error.message}</span>`;
       }
     }
   </script>
